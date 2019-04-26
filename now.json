@@ -15,7 +15,7 @@
 		}
 	},
 	{
-		"src": "app.py",
+		"src": "*.py",
 		"use": "@liudonghua123/now-flask",
 		"config": {
 			"maxLambdaSize": "10mb"
