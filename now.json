@@ -1,0 +1,24 @@
+{
+	"version": 2,
+	"builds": [{
+		"src": "static/js/application.js",
+		"use": "@now/node",
+		"config": {
+			"maxLambdaSize": "5mb"
+		}
+	},
+	{
+		"src": "templates/index.html",
+		"use": "@now/static",
+		"config": {
+			"maxLambdaSize": "5mb"
+		}
+	},
+	{
+		"src": "app.py",
+		"use": "@liudonghua123/now-flask",
+		"config": {
+			"maxLambdaSize": "10mb"
+		}
+	}]
+}
