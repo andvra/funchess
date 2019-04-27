@@ -37,7 +37,39 @@ $(document).ready(function() {
     }
     render();
   });
+
+  socket.on('newmsg', function(msg) {
+    handleMessage(msg);
+  });
 });
+
+function handleMessage(msg) {
+  console.log(msg);
+  switch (msg.msg) {
+    case 'gameover':
+      toggleGameOverVisibility();
+      return;
+    case 'connected':
+      addMessage('Connected to server');
+      return;
+  }
+  $('#messages').html(msg.msg);
+}
+
+function toggleGameOverVisibility() {
+  const currentVisibility = $('#game-over').css('visibility');
+  currentVisibility === 'hidden'
+    ? $('#game-over').css('visibility', 'visible')
+    : $('#game-over').css('visibility', 'hidden');
+}
+
+function addMessage(msg) {
+  $('#messages').html(msg);
+}
+
+function resetMessages() {
+  $('#messages').html('');
+}
 
 $(document).on('click', 'rect', function(event) {
   getSquareFromRect(event.target);
@@ -108,6 +140,7 @@ function do_previous() {
 }
 
 function restart_game() {
+  resetMessages();
   socket.emit('restart');
 }
 

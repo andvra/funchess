@@ -16,10 +16,9 @@ class Player:
         self.agent = agent
 
 
-player_one = Player(False, AgentMinimax(4))
+player_one = Player(False, AgentMinimax(2))
 player_two = Player(True)
 human_player = True
-max_depth = 2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
@@ -28,7 +27,6 @@ app.config['DEBUG'] = True
 socketio = SocketIO(app)
 
 thread = Thread()
-thread_stop_event = Event()
 
 
 def scale_svg(svg_data, width_px=800):
@@ -37,12 +35,17 @@ def scale_svg(svg_data, width_px=800):
     return svg
 
 
+def send_message(msg):
+    socketio.emit('newmsg', {'msg': msg}, namespace='/chessgame')
+
+
 class GameThread(Thread):
     def __init__(self):
         super(GameThread, self).__init__()
         self.svgs = []
         self.input_move = None
         self.board = chess.Board()
+        self.__thread_stop_event__ = Event()
 
     def register_human_move(self, move_string):
         legal_moves = [move.uci()
@@ -84,7 +87,7 @@ class GameThread(Thread):
         svg = self.board_to_svg()
         self.svgs.append(svg)
         self.emit()
-        while not thread_stop_event.isSet():
+        while not self.__thread_stop_event__.isSet():
             self.move(True)
             self.svgs.append(self.board_to_svg())
             self.emit()
@@ -101,12 +104,10 @@ class GameThread(Thread):
 
     def game_over(self):
         print("GAME OVER")
-        game_over_svg_file = open("gameover.svg", "r")
-        game_over_svg = game_over_svg_file.read()
-        scaled_svg = scale_svg(game_over_svg)
-        print("Done scaling SVG. Result (first 50): " + scaled_svg[:50])
-        self.svgs.append(scaled_svg)
-        self.emit()
+        send_message('gameover')
+
+    def do_stop(self):
+        self.__thread_stop_event__.set()
 
 
 @app.route('/')
@@ -118,17 +119,17 @@ def index():
 def start_game():
     global thread
     print("Starting Game")
+    # Stop running thread if it's initiated already
+    if type(thread) == GameThread:
+        thread.do_stop()
     thread = GameThread()
     thread.start()
 
 
 @socketio.on('connect', namespace='/chessgame')
 def connect():
-    # need visibility of the global thread object
     global thread
-    print('Client connected')
-
-    # Start the random number generator thread only if the thread has not been started before.
+    send_message('connected')
     if not thread.isAlive():
         start_game()
     else:

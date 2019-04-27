@@ -18,11 +18,15 @@
     />
   </head>
   <body>
+    <div id="game-over" onClick="toggleGameOverVisibility()">
+      <p>Game over</p>
+    </div>
     <div class="container" id="content">
       <div id="move-count">Move count</div>
       <div id="running">Running</div>
       <div class="row">
-        <div id="board"></div>
+        <div id="board" class="column"></div>
+        <div id="messages" class="column"></div>
       </div>
       <button onClick="do_previous()" id="previous">
         Previous
