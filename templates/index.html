@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-    <script src="static/js/application.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <script
+      type="text/javascript"
+      src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"
+    ></script>
+    <script src="static/js/board.js"></script>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
-
-<div class="container" id="content">
-	<div id="move-count">Move count</div>
-	<div id="running">Running</div>
-    <div class="row">
-        <div id="board">
-        </div>
+    <link
+      rel="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container" id="content">
+      <div id="move-count">Move count</div>
+      <div id="running">Running</div>
+      <div class="row">
+        <div id="board"></div>
+      </div>
+      <button onClick="do_previous()" id="previous">
+        Previous
+      </button>
+      <button onClick="do_continue()" id="continue" disabled="disabled">
+        Continue
+      </button>
+      <button onClick="do_next()" id="next">
+        Next
+      </button>
+      <button onClick="restart_game()" id="restart">Restart</button>
+      <input id="move-input" disabled="disabled" />
     </div>
-	<button onClick="do_previous()" id="previous" disabled="running">Previous</button>
-	<button onClick="toggle_run()" id="toggle-run">Pause</button>
-	<button onClick="do_next()" id="next" disabled="running">Next</button>
-	<button onClick="move()" id="move-send">Move</button>
-	<button onClick="restart_game()" id="restart">Restart</button>
-	<input id="move-input"/>
-</div>
-
-
-</body>
+  </body>
 </html>
