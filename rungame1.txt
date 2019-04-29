@@ -1,0 +1,690 @@
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r . b q k b n r
+p p p p p p p p
+. . n . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r . b q k b n r
+p p p p p p p p
+. . n . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+. . . . . r k .
+. . . . . . . .
+. . . . . . . .
+. . P . . . . b
+. . . . . . N .
+. . . . . . R .
+. . . . . . . .
+. . . . . . . .
+Number of plys: 2
+
+. . . . . r k .
+. . . . . . . .
+. . . . . N . .
+. . P . . . . b
+. . . . . . . .
+. . . . . . R .
+. . . . . . . .
+. . . . . . . .
+Number of plys: 3
+
+. . . . . r . .
+. . . . . . . .
+. . . . . . r .
+. . P . . . . b
+. . . . . . N .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+Number of plys: 4
+
+. . . . . r . .
+. . . . . . . .
+r . . . . . . .
+. . P . . . . b
+. . . . . . N .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+Number of plys: 5
+
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. B P . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . r . . . .
+Number of plys: 6
+
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. B P . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+r . . . . . . .
+Number of plys: 7
+
+. . . . . . . .
+. . . . . . . .
+. . P . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . R
+Number of plys: 8
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r . . . . . . .
+. p . . . N . R
+. . . . . . P .
+. . . . B . n .
+P . . . . b . .
+. P P . . P p .
+. . . . . . n .
+. R . . . . . .
+Number of plys: 2
+
+r . . . . . . .
+. p . . . . . R
+. . . . . . P .
+. . . . B . N .
+P . . . . b . .
+. P P . . P p .
+. . . . . . n .
+. R . . . . . .
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+. . . k . . . .
+P . . . . . . r
+. r n . . . . .
+. P . P P . . .
+r . . . . . . p
+b . P . . . P P
+. . . . . P B N
+. . n K R . . .
+Number of plys: 2
+
+. . . k . . . .
+P . . . . . . r
+. r P . . . . .
+. . . P P . . .
+r . . . . . . p
+b . P . . . P P
+. . . . . P B N
+. . n K R . . .
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+. . . . Q b n .
+. . . . . . . .
+. . . . N . . .
+. . P . P . . .
+. . . . k . p P
+. . . b . . P b
+R . . . r . . .
+. . . . K . . .
+Number of plys: 2
+
+. . . . Q b n .
+. . . . . . . .
+. . . . N . . .
+. . P . P . . .
+. . . . k . p P
+. . . . . . P b
+R . b . r . . .
+. . . . K . . .
+Number of plys: 3
+
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . b .
+. . . . . . P .
+. . . . . p . .
+. . . . . . . .
+. . . . . . . .
+Number of plys: 4
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p .
+. . . . . . . p
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b n r
+p p p p p p p .
+. . . . . . . p
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p . .
+. . . . . . p p
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 4
+
+r n b q k b n r
+p p p p p p . .
+. . . . . . p p
+. . . . . . . .
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 5
+
+r n b q k b n .
+p p p p p p . r
+. . . . . . p p
+. . . . . . . .
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 6
+
+r n b q k b n .
+p p p p p p . r
+. . . . . . p p
+. . . . . . . .
+. . . P P . . .
+. . N . . N . .
+P P P . . P P P
+R . B Q K B . R
+Number of plys: 7
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p . p
+. . . . . . p .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b n r
+p p p p p p . p
+. . . . . . p .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b . r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . n
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 4
+
+r n b q k b . r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . n
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 5
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b . r
+p p p p p p p p
+. . . . . . . n
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b . r
+p p p p p p p p
+. . . . . . . n
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b r .
+p p p p p p p p
+. . . . . . . n
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 4
+
+r n b q k b r .
+p p p p p p p p
+. . . . . . . n
+. . . . . . . .
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 5
+
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b n r
+p p p p p p p .
+. . . . . . . .
+. . . . . . . p
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b n r
+p p p p p p p .
+. . . . . . . .
+. . . . . . . p
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r n b q k b . r
+p p p p p p p .
+. . . . . . . n
+. . . . . . . p
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 4
+
+r n b q k b . r
+p p p p p p p .
+. . . . . . . n
+. . . . . . . p
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 5
+
