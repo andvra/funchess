@@ -8,17 +8,13 @@ import chess.svg
 import random
 import time
 from agentminimax import AgentMinimax
-
-
-class Player:
-    def __init__(self, is_human, agent=False):
-        self.is_human = is_human
-        self.agent = agent
+from agentuct import AgentUCT
+from agentrandom import AgentRandom
+from player import Player
 
 
 player_one = Player(False, AgentMinimax(2))
-player_two = Player(True)
-human_player = True
+player_two = Player(False, AgentUCT(10, 10))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
