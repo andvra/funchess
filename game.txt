@@ -1,0 +1,50 @@
+r n b q k b n r
+p p p p p p p p
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 1
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . . . .
+P P P P P P P P
+R . B Q K B N R
+Number of plys: 2
+
+r n b q k b . r
+p p p p p p p p
+. . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 3
+
+r . b q k b . r
+p p p p p p p p
+n . . . . n . .
+. . . . . . . .
+. . . . . . . .
+. . N . . N . .
+P P P P P P P P
+R . B Q K B . R
+Number of plys: 4
+
+r . b q k b . r
+p p p p p p p p
+n . . . . n . .
+. . . . . . . .
+. . . P . . . .
+. . N . . N . .
+P P P . P P P P
+R . B Q K B . R
+Number of plys: 5
+
