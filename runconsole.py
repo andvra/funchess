@@ -5,7 +5,7 @@ from agentuct import AgentUCT
 from agentrandom import AgentRandom
 
 player_one = Player(False, AgentMinimax(2))
-player_two = Player(False, AgentUCT(8, 10))
+player_two = Player(False, AgentUCT(300, 10))
 
 
 def print_board(board, fname, no_plys):

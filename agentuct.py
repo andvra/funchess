@@ -3,8 +3,8 @@ import time
 import random
 import math
 import operator
-import threading
-from concurrent.futures import ThreadPoolExecutor, wait
+import  multiprocessing as mp
+import os
 
 class MCTSNode:
     # level 0 = root
@@ -50,24 +50,27 @@ class MCTSNode:
 
 
 class ChessNode(MCTSNode):
-    def __init__(self, board, level):
+    def __init__(self, board, level, start_legal_move=None,max_legal_moves=None):
         self.legal_moves = [move for _, move in enumerate(board.legal_moves)]
+        if start_legal_move!=None:
+            self.legal_moves=self.legal_moves[start_legal_move:start_legal_move+max_legal_moves]
+            print(self.legal_moves)
+            print('Count: {}'.format(len(self.legal_moves)))
         super().__init__(len(self.legal_moves), level)
-        self._lock = threading.Lock()
 
     def get_child(self, board, min_tries_per_node):
-        with self._lock:
-            new_node_created=False
-            if self.must_explore(min_tries_per_node):
-                idx, child_node, cur_move = self.get_move_to_explore()
-                if child_node==None:
-                    board.push(cur_move)
-                    child_node = ChessNode(board, self.level+1)
-                    board.pop()
-                    self.children[idx]=child_node
-                    new_node_created=True
-            else:
-                idx, child_node, cur_move = self.get_promising_children()
+        new_node_created=False
+        if self.must_explore(min_tries_per_node):
+            idx, child_node, cur_move = self.get_move_to_explore()
+            if child_node==None:
+                # Perform the move here to get the possible moves for initialization
+                board.push(cur_move)
+                child_node = ChessNode(board, self.level+1)
+                board.pop()
+                self.children[idx]=child_node
+                new_node_created=True
+        else:
+            idx, child_node, cur_move = self.get_promising_children()
         return idx, child_node, cur_move, new_node_created
 
     def get_move_to_explore(self):
@@ -117,35 +120,49 @@ class AgentUCT(AgentBase):
                 node.visits += 1
             return result
 
-    def run_it(self, board, is_white, root, t_start,id):
-        print("Start job " + str(id))
+    def run_it(self, board, is_white, root_part, t_start,pid,out_queue):
+        print("Start job " + str(pid))
         while (time.time()-t_start<self.t_max):
-            self.uct(board, is_white, root)
-        print("End job " + str(id))
+            self.uct(board, is_white, root_part)
+        print("Finished loop for pid {}".format(pid))
+        idx_max, val_max = max([(idx, val.value/val.visits) for idx, val in enumerate(root_part.children) if val and val.value>0], key=operator.itemgetter(1))
+        for idx, node in enumerate(root_part.children):
+            if node == None:
+                print('Node %02d doesn\'t exist. Increase run time')
+            else:
+                print('Node %02d:\tValue: %.2f\tVisited:%d\tucb:%f' % (idx, node.value, node.visits, node.ucb_value(self.no_nodes)))
+        out_queue.put((root_part.legal_moves[idx_max],val_max))
+        print("End job " + str(pid))
 
     def make_move(self, board, is_white):
         t_start = time.time()
         self.reset()
-        root = ChessNode(board, 0)
-        futures=[]
-        no_threads = 4
-        with ThreadPoolExecutor(max_workers=no_threads) as executor:
-            for i in range(0,no_threads):
-                futures.append(executor.submit(self.run_it, board.copy(), is_white, root, t_start,i+1))
-        wait(futures)
+        #root = ChessNode(board, 0)
+        print('The current system have {} CPUs of which {} are usable'.format(mp.cpu_count(),len(os.sched_getaffinity(0))))
+        no_processes = 3
+        no_legal_moves=board.legal_moves.count()
+        legal_moves_per_process=math.ceil(no_legal_moves/no_processes)
+        processes=[]
+        root_parts=[]
+        out_queue=mp.Queue()
+        for i in range(0,no_processes):
+            root_parts.append(ChessNode(board.copy(),0,i*legal_moves_per_process,legal_moves_per_process))
+            processes.append(mp.Process(target=self.run_it,args=(board.copy(),is_white,root_parts[-1],t_start,i+1,out_queue)))
+            processes[-1].start()
+        for p in processes:
+            p.join()
+        max_val,max_val_move=-math.inf,None
+        for i in range(0,no_processes):
+            cur_max_move, cur_max_val = out_queue.get()
+            print(cur_max_move,cur_max_val)
+            if cur_max_val>max_val:
+                max_val=cur_max_val
+                max_val_move=cur_max_move
         print("Done with all the jobs")
-        idx_max, val_max = max([(idx, val.value/val.visits) for idx, val in enumerate(
-            root.children) if val and val.value>0], key=operator.itemgetter(1))
-        chosen_node_idx, chosen_node_value = idx_max, val_max
-        for idx, node in enumerate(root.children):
-            if node == None:
-                print('Node %02d doesn\'t exist. Increase run time')
-            else:
-                print('Node %02d:\tValue: %.2f\tVisited:%d\tucb:%f' %
-                      (idx, node.value, node.visits, node.ucb_value(self.no_nodes)))
-        print('Chose node with idx=%d and value/visits=%f. Total %d nodes. Max level %d' %
-              (chosen_node_idx, chosen_node_value, self.no_nodes, self.max_level))
-        move = root.legal_moves[chosen_node_idx]
+
+        move = max_val_move
+        print('Chose move {} with value/visits={}. Node count: {} Max depth: {}'.format
+                (max_val_move, max_val, self.no_nodes, self.max_level))
         return move
 
 
