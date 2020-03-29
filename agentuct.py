@@ -138,7 +138,7 @@ class AgentUCT(AgentBase):
         t_start = time.time()
         self.reset()
         #root = ChessNode(board, 0)
-        print('The current system have {} CPUs of which {} are usable'.format(mp.cpu_count(),len(os.sched_getaffinity(0))))
+        #print('The current system have {} CPUs of which {} are usable'.format(mp.cpu_count(),len(os.sched_getaffinity(0))))
         no_processes = 3
         no_legal_moves=board.legal_moves.count()
         legal_moves_per_process=math.ceil(no_legal_moves/no_processes)
