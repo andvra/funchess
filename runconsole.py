@@ -5,7 +5,7 @@ from agentuct import AgentUCT
 from agentrandom import AgentRandom
 
 player_one = Player(False, AgentMinimax(2))
-player_two = Player(False, AgentUCT(300, 10))
+player_two = Player(False, AgentUCT(5, 10))
 
 
 def print_board(board, fname, no_plys):
@@ -29,6 +29,8 @@ def run(board, is_white, fname, no_plys=0):
         chosen_move = player_one.agent.make_move(board, True)
     else:
         chosen_move = player_two.agent.make_move(board, False)
+    if chosen_move == None:
+        return
     board.push(chosen_move)
     no_plys += 1
     print_board(board, fname, no_plys)

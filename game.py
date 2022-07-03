@@ -15,7 +15,7 @@ player_two = Player(False, AgentUCT(10, 10))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
-app.config['DEBUG'] = True
+#app.config['DEBUG'] = True
 
 socketio = SocketIO(app)
 
@@ -123,7 +123,7 @@ def start_game():
 def connect():
     global thread
     send_message('connected')
-    if not thread.isAlive():
+    if not thread.is_alive():
         start_game()
     else:
         thread.emit()
