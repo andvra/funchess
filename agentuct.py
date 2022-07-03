@@ -3,8 +3,9 @@ import time
 import random
 import math
 import operator
-import  multiprocessing as mp
+import multiprocessing as mp
 import os
+
 
 class MCTSNode:
     # level 0 = root
@@ -50,25 +51,25 @@ class MCTSNode:
 
 
 class ChessNode(MCTSNode):
-    def __init__(self, board, level, start_legal_move=None,max_legal_moves=None):
+    def __init__(self, board, level, start_legal_move=None, max_legal_moves=None):
         self.legal_moves = [move for _, move in enumerate(board.legal_moves)]
-        if start_legal_move!=None:
-            self.legal_moves=self.legal_moves[start_legal_move:start_legal_move+max_legal_moves]
+        if start_legal_move != None:
+            self.legal_moves = self.legal_moves[start_legal_move:start_legal_move+max_legal_moves]
             print(self.legal_moves)
             print('Count: {}'.format(len(self.legal_moves)))
         super().__init__(len(self.legal_moves), level)
 
     def get_child(self, board, min_tries_per_node):
-        new_node_created=False
+        new_node_created = False
         if self.must_explore(min_tries_per_node):
             idx, child_node, cur_move = self.get_move_to_explore()
-            if child_node==None:
+            if child_node == None:
                 # Perform the move here to get the possible moves for initialization
                 board.push(cur_move)
                 child_node = ChessNode(board, self.level+1)
                 board.pop()
-                self.children[idx]=child_node
-                new_node_created=True
+                self.children[idx] = child_node
+                new_node_created = True
         else:
             idx, child_node, cur_move = self.get_promising_children()
         return idx, child_node, cur_move, new_node_created
@@ -89,49 +90,52 @@ class AgentUCT(AgentBase):
     def __init__(self, t_max, min_tries_per_node):
         self.t_max = t_max
         self.min_tries_per_node = min_tries_per_node
-        self.max_level=0
+        self.max_level = 0
         self.no_nodes = 0
 
     def reset(self):
-        self.max_level=0
-        self.no_nodes=0
+        self.max_level = 0
+        self.no_nodes = 0
 
     def uct(self, board, is_white, node):
         if board.is_game_over():
             return {'1-0': 1, '1/2-1/2': 0.5, '0-1': 0}[board.result()]
-        elif node.level==150:
+        elif node.level == 150:
             return 2
         else:
-            idx, child_node, cur_move, new_node_created = node.get_child(board, self.min_tries_per_node)
+            idx, child_node, cur_move, new_node_created = node.get_child(
+                board, self.min_tries_per_node)
             if new_node_created:
                 self.no_nodes += 1
-            self.max_level=max(self.max_level,child_node.level)
+            self.max_level = max(self.max_level, child_node.level)
             board.push(cur_move)
             result = self.uct(board, not is_white, child_node)
             board.pop()
             # Black should get one point when black wins. Since the returned result for black win is 0,
             #   we subtract it from 1. This will also handle the case of a draw
             # Less than two: This is to keep a break at 150 moves (tweakable parameter)
-            if result<2:
+            if result < 2:
                 if is_white:
-                 node.value += result
+                    node.value += result
                 else:
                     node.value += (1-result)
                 node.visits += 1
             return result
 
-    def run_it(self, board, is_white, root_part, t_start,pid,out_queue):
+    def run_it(self, board, is_white, root_part, t_start, pid, out_queue):
         print("Start job " + str(pid))
-        while (time.time()-t_start<self.t_max):
+        while (time.time()-t_start < self.t_max):
             self.uct(board, is_white, root_part)
         print("Finished loop for pid {}".format(pid))
-        idx_max, val_max = max([(idx, val.value/val.visits) for idx, val in enumerate(root_part.children) if val and val.value>0], key=operator.itemgetter(1))
+        idx_max, val_max = max([(idx, val.value/val.visits) for idx, val in enumerate(
+            root_part.children) if val and val.value > 0], key=operator.itemgetter(1))
         for idx, node in enumerate(root_part.children):
             if node == None:
                 print('Node %02d doesn\'t exist. Increase run time')
             else:
-                print('Node %02d:\tValue: %.2f\tVisited:%d\tucb:%f' % (idx, node.value, node.visits, node.ucb_value(self.no_nodes)))
-        out_queue.put((root_part.legal_moves[idx_max],val_max))
+                print('Node %02d:\tValue: %.2f\tVisited:%d\tucb:%f' % (
+                    idx, node.value, node.visits, node.ucb_value(self.no_nodes)))
+        out_queue.put((root_part.legal_moves[idx_max], val_max))
         print("End job " + str(pid))
 
     def make_move(self, board, is_white):
@@ -140,29 +144,31 @@ class AgentUCT(AgentBase):
         #root = ChessNode(board, 0)
         #print('The current system have {} CPUs of which {} are usable'.format(mp.cpu_count(),len(os.sched_getaffinity(0))))
         no_processes = 3
-        no_legal_moves=board.legal_moves.count()
-        legal_moves_per_process=math.ceil(no_legal_moves/no_processes)
-        processes=[]
-        root_parts=[]
-        out_queue=mp.Queue()
-        for i in range(0,no_processes):
-            root_parts.append(ChessNode(board.copy(),0,i*legal_moves_per_process,legal_moves_per_process))
-            processes.append(mp.Process(target=self.run_it,args=(board.copy(),is_white,root_parts[-1],t_start,i+1,out_queue)))
+        no_legal_moves = board.legal_moves.count()
+        legal_moves_per_process = math.ceil(no_legal_moves/no_processes)
+        processes = []
+        root_parts = []
+        out_queue = mp.Queue()
+        for i in range(0, no_processes):
+            root_parts.append(ChessNode(board.copy(), 0, i *
+                              legal_moves_per_process, legal_moves_per_process))
+            processes.append(mp.Process(target=self.run_it, args=(
+                board.copy(), is_white, root_parts[-1], t_start, i+1, out_queue)))
             processes[-1].start()
         for p in processes:
             p.join()
-        max_val,max_val_move=-math.inf,None
-        for i in range(0,no_processes):
+        max_val, max_val_move = -math.inf, None
+        for i in range(0, no_processes):
             cur_max_move, cur_max_val = out_queue.get()
-            print(cur_max_move,cur_max_val)
-            if cur_max_val>max_val:
-                max_val=cur_max_val
-                max_val_move=cur_max_move
+            print(cur_max_move, cur_max_val)
+            if cur_max_val > max_val:
+                max_val = cur_max_val
+                max_val_move = cur_max_move
         print("Done with all the jobs")
 
         move = max_val_move
         print('Chose move {} with value/visits={}. Node count: {} Max depth: {}'.format
-                (max_val_move, max_val, self.no_nodes, self.max_level))
+              (max_val_move, max_val, self.no_nodes, self.max_level))
         return move
 
 

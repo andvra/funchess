@@ -5,11 +5,8 @@ from time import sleep
 from threading import Thread, Event
 import chess
 import chess.svg
-import random
-import time
 from agentminimax import AgentMinimax
 from agentuct import AgentUCT
-from agentrandom import AgentRandom
 from player import Player
 
 
@@ -58,7 +55,7 @@ class GameThread(Thread):
         return move
 
     def move(self, is_white):
-        if ((is_white == True) and (player_one.is_human)) or((is_white == False) and (player_two.is_human)):
+        if ((is_white == True) and (player_one.is_human)) or ((is_white == False) and (player_two.is_human)):
             while self.input_move == None:
                 sleep(1)  # Sleep for a second and check again
             chosen_move = self.get_human_move()
