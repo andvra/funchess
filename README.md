@@ -11,7 +11,7 @@ Using [flask-socketio](https://flask-socketio.readthedocs.io/) for graphical pla
 The game can be run in console mode. This is mainly used for debugging, and for following the steps performed by the agents.
 
 ```
-python runconsole.py
+$ python runconsole.py
 ```
 
 <img src="./assets/console.png" width="500px">
@@ -21,7 +21,7 @@ python runconsole.py
 The game can also be played in the browsed, either manually, by algorithms or a combination.
 
 ```
-python game.py
+$ python game.py
 ```
 
 <img src="./assets/board.png" width="500px">
@@ -33,7 +33,7 @@ If you want to handle one (or both!) players manually, find the lines in the top
 ## Installation
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ## Todo
