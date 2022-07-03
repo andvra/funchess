@@ -2,6 +2,8 @@
 
 Trying out some different algorithms for chess agents: [Minimax](https://en.wikipedia.org/wiki/Minimax) and [Monte Carlo tree search](https://www.chessprogramming.org/Monte-Carlo_Tree_Search)
 
+Works with Python >= 3.7
+
 Using [flask-socketio](https://flask-socketio.readthedocs.io/) for graphical play
 
 ## Running in console mode
